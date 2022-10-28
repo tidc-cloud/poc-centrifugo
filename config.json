@@ -1,0 +1,32 @@
+{
+  "token_hmac_secret_key": "my_secret",
+  "api_key": "my_api_key",
+  "admin_password": "password",
+  "admin_secret": "secret",
+  "admin": true,
+  "allowed_origins": ["http://localhost:3000"],
+  "allow_subscribe_for_client": true,
+  "user_subscribe_to_personal" : true,
+  "proxy_subscribe_endpoint": "http://172.27.222.213:3001/centrifugo/subscribe",
+  "proxy_subscribe_timeout":  "1s",
+  "namespaces": [
+    {
+      "name": "activity",
+      "history_size": 10,
+      "history_ttl": "300s"
+    },
+    {
+      "name": "private",
+      "allow_subscribe_for_client":false
+    },
+    {
+      "name": "public",
+      "allow_subscribe_for_client":true
+    }
+    ,
+    {
+      "name": "info",
+      "proxy_subscribe": true
+    }
+]
+}
