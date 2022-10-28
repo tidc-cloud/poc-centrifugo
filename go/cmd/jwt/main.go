@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/golang-jwt/jwt"
 )
@@ -13,10 +12,10 @@ func generateJWT() (string, error) {
 	var sampleSecretKey = []byte("my_secret")
 	token := jwt.New(jwt.SigningMethodHS256)
 	claims := token.Claims.(jwt.MapClaims)
-	claims["exp"] = time.Now().Add(100 * time.Hour).Unix()
+	// claims["exp"] = time.Now().Add(1000000 * time.Hour).Unix()
 	claims["authorized"] = true
 	claims["sub"] = "1234"
-	claims["channels"] = [2]string{ "activity:a_trail03"}//"#1234",
+	claims["channels"] = [2]string{"activity:a_trail03"} //"#1234",
 	tokenString, err := token.SignedString(sampleSecretKey)
 	if err != nil {
 		return "", err
